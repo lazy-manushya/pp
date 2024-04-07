@@ -1,0 +1,12 @@
+:root {
+  --clr-primary-200: #F0EFFF;
+  --clr-primary-300: #E5E4FB;
+  --clr-primary-400: #A19CF0;
+  --clr-primary-500: #5f57ff;
+  --clr-primary-600: #312BA0;
+  --clr-primary-700: #201C6C;
+}
+
+body {
+  color: var(--clr-text) !important;
+}

@@ -1,3 +1,1 @@
-export default function Home() {
-  return <main>Paypipe</main>;
-}
+export { default } from "@/features/pages/app/HomePage";

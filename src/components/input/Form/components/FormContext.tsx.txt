@@ -1,0 +1,61 @@
+import React, {useCallback, Context, useMemo} from 'react';
+import {useFormik, FormikProvider} from 'formik';
+import isFunction from 'lodash/isFunction';
+import {FormikValues} from 'formik/dist/types';
+
+import {IFormProps, IFormContext} from '../Form.types';
+
+const INITIAL_VALUES = {} as IFormContext<any>;
+
+const FormContext = React.createContext(INITIAL_VALUES);
+
+export function useForm<T>() {
+  return React.useContext(FormContext as Context<IFormContext<T>>);
+}
+
+export function FormProvider<T extends FormikValues>({
+  initialValues = {} as T,
+  yupValidationSchema = {},
+  children,
+  onSubmit,
+}: IFormProps<T>) {
+  const handleSubmitForm = useCallback(
+    (values: any) => {
+      if (onSubmit) onSubmit(values);
+    },
+    [onSubmit],
+  );
+
+  const formik = useFormik({
+    initialValues: initialValues,
+    onSubmit: handleSubmitForm,
+    validationSchema: yupValidationSchema,
+  });
+  const {
+    values,
+    errors,
+    touched,
+    setFieldValue,
+    handleSubmit: formikSubmitForm,
+  } = formik;
+
+  const value = useMemo(
+    () =>
+      ({
+        values,
+        errors,
+        touched,
+        setFieldValue,
+        submitForm: formikSubmitForm,
+      } as IFormContext<T>),
+    [values, errors, touched, setFieldValue, formikSubmitForm],
+  );
+
+  return (
+    <FormContext.Provider value={value}>
+      <FormikProvider value={formik}>
+        {isFunction(children) ? children({context: value}) : children}
+      </FormikProvider>
+    </FormContext.Provider>
+  );
+}

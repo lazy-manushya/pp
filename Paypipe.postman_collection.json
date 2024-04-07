@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "284a786e-0198-471c-bf1e-c89f6191d7a8",
+		"name": "Paypipe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "914033"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"olivin_esguerra@yahoo.com\",\r\n    \"family_name\": \"Esguerra\",\r\n    \"given_name\": \"Olivin\",\r\n    \"owner_id\": \"kp_5b457a82681f43cd92df92d23e733911\",\r\n    \"picture\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/auth/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Healthcheck",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/{{env}}/auth/healthcheck",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"auth",
+								"healthcheck"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get Profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/{{env}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Contract",
+			"item": [
+				{
+					"name": "Create Transaction",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"description\":\"dadsfasdfadf\",\r\n   \"title\":\"fasdfasdfas\",\r\n   \"start_date\":null,\r\n   \"end_date\":null,\r\n   \"transaction_type\":\"full_payment\",\r\n   \"contract_type\":\"fixed\",\r\n   \"milestones\":[\r\n      {\r\n         \"name\":\"\",\r\n         \"description\":\"\",\r\n         \"value\":234234234,\r\n         \"start_date\":null,\r\n         \"end_date\":null,\r\n         \"currency\":\"USD\"\r\n      }\r\n   ],\r\n   \"created_as\":\"contractor\",\r\n   \"attachments\":[\r\n      1,\r\n      2,\r\n      3\r\n   ],\r\n   \"client_email_number\":\"sdfasdfasdf@yahoo.com\",\r\n   \"client_name\":\"asdfasdfasd\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInVzZXJfaWQiOjMsInJvbGUiOiJjbGllbnQiLCJjb250cmFjdF9pZCI6Ijg5N2M1YjllLWI3ZWEtNDcwYS05NWQ0LTI2ZTZjMTg4YzIxMCIsImNvbnRyYWN0X21pbGVzdG9uZV9pZCI6OCwidXBkYXRlZF9hdCI6IjIwMjQtMDMtMDhUMDQ6NDE6MzkuMDAwWiIsImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTA4VDA0OjQxOjM5LjAwMFoiLCJ1c2VyIjp7ImlkIjozLCJlbWFpbCI6ImFzZGZhc2RmYXNkZkB5YWhvby5jb20iLCJnaXZlbl9uYW1lIjoic2RmYXNkZiIsImZhbWlseV9uYW1lIjpudWxsLCJwaWN0dXJlIjpudWxsLCJvd25lcl9pZCI6bnVsbCwib3duZXJfcHJvZmlsZSI6bnVsbCwic3RyaXBlX2Nvbm5lY3RfZGF0YSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjQtMDMtMDZUMDg6MjA6MzcuMDAwWiIsImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTA2VDA4OjIwOjM3LjAwMFoifSwidkNvZGUiOjI2ODE0MSwiaWF0IjoxNzA5ODcyOTQ0LCJleHAiOjE3MDk4NzY1NDR9.FXVIADEpeR_kLbpuYd73Mc8vxChCKOlaPo5xhFtSE_Y",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract/detail/:transaction_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract",
+								"detail",
+								":transaction_id"
+							],
+							"variable": [
+								{
+									"key": "transaction_id",
+									"value": "897c5b9e-b7ea-470a-95d4-26e6c188c210"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify Contract",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"v_code\": 268141\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract/detail/verify/:transaction_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract",
+								"detail",
+								"verify",
+								":transaction_id"
+							],
+							"variable": [
+								{
+									"key": "transaction_id",
+									"value": "897c5b9e-b7ea-470a-95d4-26e6c188c210"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Accept Contract",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTAsInVzZXJfaWQiOjIsInJvbGUiOiJjbGllbnQiLCJjb250cmFjdF9pZCI6ImY1MjVlNzI5LTZhMzAtNDlmZi04OTk5LWYyNjVhOWRjZThmMyIsImNvbnRyYWN0X21pbGVzdG9uZV9pZCI6NSwidXBkYXRlZF9hdCI6IjIwMjQtMDMtMDZUMDg6NTk6NTQuMDAwWiIsImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTA2VDA4OjU5OjU0LjAwMFoiLCJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6InNkZmFzZGZhc2RmQHlhaG9vLmNvbSIsImdpdmVuX25hbWUiOiJhc2RmYXNkZmFzZCIsImZhbWlseV9uYW1lIjpudWxsLCJwaWN0dXJlIjpudWxsLCJvd25lcl9pZCI6bnVsbCwib3duZXJfcHJvZmlsZSI6bnVsbCwic3RyaXBlX2Nvbm5lY3RfZGF0YSI6bnVsbCwidXBkYXRlZF9hdCI6IjIwMjQtMDMtMDZUMDY6MTY6MTIuMDAwWiIsImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTA2VDA2OjE2OjEyLjAwMFoifSwidkNvZGUiOjk5OTE4MCwiaWF0IjoxNzA5NzE1ODkxLCJleHAiOjE3MDk3MTk0OTF9.9Jh8fpa5MrQbeMzTnKJMtlTKcaJBA4LJjxpYwOB0gMs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract/approve/:transactionId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract",
+								"approve",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "f0330ddb-dfdf-4d2e-9178-a7a4f9c84ef6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reject Contract",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reject_header\": \"Test\",\r\n    \"reject_reason\": \"this is magnificient\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract/reject/:transactionId",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract",
+								"reject",
+								":transactionId"
+							],
+							"variable": [
+								{
+									"key": "transactionId",
+									"value": "f0330ddb-dfdf-4d2e-9178-a7a4f9c84ef6"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction List",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"description\": \"Test\",\r\n    \"total_value\": 1000,\r\n    \"title\":\"test\",\r\n    \"start_date\": 1707797669780,\r\n    \"end_date\": 1707797669780,\r\n    \"transaction_type\": \"fixed\",\r\n    \"contract_type\": \"milestone\",\r\n    \"milestones\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/contract",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"contract"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Media",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/C:/Users/olibeano/Downloads/427770488_703148161973937_627178792354663104_n (1).jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/api/{{env}}/upload",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Media Files",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/{{env}}/media",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"media"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user Media",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImMxOmNlOjk1OmY4OjkyOmZlOjBmOmZkOjFmOjU1OjBmOjYzOjVkOmRkOjg3OjI0IiwidHlwIjoiSldUIn0.eyJhdWQiOltdLCJhenAiOiI1NThhYmVkZjdkODk0YTNhYTk2NWExNGY4ZTc0MDhhYSIsImJpbGxpbmciOnsiaGFzX3BheW1lbnRfZGV0YWlscyI6ZmFsc2UsIm9yZ19lbnRpdGxlbWVudHMiOm51bGwsInBsYW4iOnsiYWdyZWVtZW50X2lkIjpudWxsLCJjb2RlIjpudWxsLCJjcmVhdGVkX29uIjpudWxsLCJoYXNfdHJpYWxfcGVyaW9kIjpudWxsLCJpbnZvaWNlX2R1ZV9vbiI6bnVsbCwibmFtZSI6bnVsbCwicGxhbl9jaGFyZ2VfdHlwZSI6bnVsbCwidHJpYWxfZXhwaXJlc19vbiI6bnVsbH19LCJleHAiOjE3MDc3OTE4OTAsImlhdCI6MTcwNzc5MTgzMCwiaXNzIjoiaHR0cHM6Ly9wYXlwaXBlLWRldi5hdS5raW5kZS5jb20iLCJqdGkiOiJjYTgwNzE4Yi1mMjg0LTQwYjktOWE0Mi1lMGEwYjU4NThjMDQiLCJvcmdfY29kZSI6Im9yZ18yZDhhYTQyZDY0NyIsInBlcm1pc3Npb25zIjpbXSwic2NwIjpbIm9wZW5pZCIsInByb2ZpbGUiLCJlbWFpbCIsIm9mZmxpbmUiXSwic3ViIjoia3BfNWI0NTdhODI2ODFmNDNjZDkyZGY5MmQyM2U3MzM5MTEifQ.lXi4TjOmDkwkYqotNQeK-pUdgy2UU25bmpB9-haI05LHCg1OBDomUF1NhKUSWSNmK8G54jvFw2lltaOP1B_g1i5I2inre03BqyolYfetUguHhln5Xz42TE75kwoGtVNp-pveoV_CkSSun0eHTu2BKwbcrEZs5AXQVMuci3CBLK-YD4j5IsiXUaw-v5MsnJXUXBThjyKpTEYzzviFDvxUMoye-0Ru9e2rHTSwLwF5jQcaayOi5iEbpd2oH_p_59EuoWYR4IA2m1-jR5g1RqNuYhhebUc_1RWnscOKyV4mUsIDI4p-l13g6wWRIncUYmfcXwiXC4BLy2EgVVzaY2hZ0w",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/{{env}}/media/:media_id",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"{{env}}",
+								"media",
+								":media_id"
+							],
+							"variable": [
+								{
+									"key": "media_id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

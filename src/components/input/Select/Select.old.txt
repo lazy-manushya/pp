@@ -1,0 +1,62 @@
+import React, { useState } from "react";
+import { HiddenSelect, useSelect } from "react-aria";
+import { Item, useSelectState } from "react-stately";
+
+import Drawer from "@/components/misc/Drawer";
+
+import { ISelectProps } from "./Select.types";
+import { StyledButton } from "./Select.styles";
+
+function Select<T = string>(props: ISelectProps<T>) {
+  const { isDisabled, label, name, options } = props;
+
+  let ref = React.useRef(null);
+  const state = useSelectState(props);
+  const { labelProps, triggerProps, valueProps, menuProps } = useSelect(
+    {
+      ...props,
+      onSelectionChange: (value) => {
+        console.log(value);
+      },
+    },
+    state,
+    ref
+  );
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <HiddenSelect
+        isDisabled={isDisabled}
+        state={state}
+        triggerRef={ref}
+        label={label}
+        name={name}
+      />
+
+      <StyledButton
+        {...triggerProps}
+        ref={ref}
+        style={{ height: 30, fontSize: 14 }}
+      >
+        <span {...valueProps}>
+          {state.selectedItem
+            ? state.selectedItem.rendered
+            : "Select an option"}
+        </span>
+        <span aria-hidden="true" style={{ paddingLeft: 5 }}>
+          ▼
+        </span>
+      </StyledButton>
+
+      <Drawer isOpen={state.isOpen} onRequestClose={state.close}>
+        {options.map(({ id, label, value }) => (
+          <Item>{label}</Item>
+        ))}
+      </Drawer>
+    </>
+  );
+}
+
+export default Select;
