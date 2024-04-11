@@ -4,13 +4,13 @@ import { ContractType } from "@/services/ContractsService";
 import { formatDate } from "@/utils/date";
 import MilestonesDisplay from "@/features/contracts/MilestonesDisplay";
 import FilesInput from "@/features/input/FilesInput";
+import DetailsTable, { Item } from "@/components/data/DetailsTable";
 
 import { useContractForm } from "../../../ContractForm.context";
 import {
   StyledContractTitle,
   StyledContractValue,
   StyledSection,
-  StyledDetailsTable,
   StyledSectionHeading,
 } from "./ReviewStep.styles";
 
@@ -34,7 +34,7 @@ const ReviewStep: React.FC = () => {
   );
 
   const detailFields = useMemo(() => {
-    let fields: { label: string; value: string }[] = [
+    let fields: Item[] = [
       {
         label: "Client's email",
         value: client_email_number,
@@ -80,16 +80,7 @@ const ReviewStep: React.FC = () => {
       <StyledSection className="mt-5">
         <StyledSectionHeading>Contract details</StyledSectionHeading>
 
-        <StyledDetailsTable className="mt-2">
-          <tbody>
-            {detailFields.map(({ label, value }, i) => (
-              <tr key={i}>
-                <td>{label}</td>
-                <td>{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </StyledDetailsTable>
+        <DetailsTable items={detailFields} />
       </StyledSection>
 
       <StyledSection className="mt-4">

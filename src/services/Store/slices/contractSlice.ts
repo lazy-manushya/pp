@@ -1,14 +1,12 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"; 
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { 
-  CreatedContractDetails,
-} from "@/services/ContractsService";
+import { ContractCompleteDetails } from "@/services/ContractsService";
 
 import { AppState } from "../index";
 import { listStateRemover, listStateSetter } from "../utils";
 
 export interface ContractState {
-  contracts: CreatedContractDetails[];
+  contracts: ContractCompleteDetails[];
 }
 
 const initialState: ContractState = {
@@ -22,7 +20,7 @@ export const contractSlice = createSlice({
     addContracts: (
       state,
       action: PayloadAction<{
-        data: CreatedContractDetails[];
+        data: ContractCompleteDetails[];
         replaceData?: boolean;
         replaceList?: boolean;
       }>
@@ -46,7 +44,10 @@ export const contractSlice = createSlice({
   },
 });
 
-export const selectContracts = (state: AppState) => state.contract.contracts; 
+export const selectContracts = (state: AppState) => state.contract.contracts;
+
+export const selectContract = (contractId: string) => (state: AppState) =>
+  state.contract.contracts.find((c) => c.id === contractId);
 
 export const contractActions = contractSlice.actions;
 export const contractReducer = contractSlice.reducer;

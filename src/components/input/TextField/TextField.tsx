@@ -27,7 +27,7 @@ const TextField: React.FC<ITextFieldProps> = ({
 }) => {
   const ref = useRef<any>();
   const ariaLabel = label || restProps.name || restProps.placeholder;
-  const { inputProps, labelProps } = useTextField(
+  const { inputProps } = useTextField(
     {
       ...restProps,
       className: inputClassName,
@@ -59,11 +59,12 @@ const TextField: React.FC<ITextFieldProps> = ({
           {...(props as any)}
           id={id}
           ref={ref}
+          {...inputProps}
           className={joinClassNames(inputClassName, inputProps.className)}
         />
       ) : (
         <StyledInput
-          {...props}
+          {...(props as any)}
           id={id}
           ref={ref}
           {...inputProps}

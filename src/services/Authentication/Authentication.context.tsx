@@ -6,6 +6,7 @@ import React, {
   useContext,
   useEffect,
   useRef,
+  useState,
 } from "react";
 import { KindeProvider, useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
@@ -22,7 +23,7 @@ export const useAuth = () => useContext(AuthContext);
 
 const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
   const {
-    isAuthenticated,
+    isAuthenticated: isAuthenticatedFromKinde,
     login,
     register,
     logout,
@@ -31,6 +32,8 @@ const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
     user,
   } = useKindeAuth();
   const updatedTokenRef = useRef(false);
+  const [token, setToken] = useState("");
+  const isAuthenticated = !!token;
 
   //-------------------------
 
@@ -49,8 +52,10 @@ const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
   //-------------------------
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticatedFromKinde) {
       if (updatedTokenRef.current) return;
+
+      setToken("");
 
       updatedTokenRef.current = true;
 
@@ -65,6 +70,7 @@ const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
           };
 
           api.setAuthToken(token);
+          setToken(token);
 
           authService.registerUser(regsiterData).then(() => {
             authService.fetchUserInfo();
@@ -74,7 +80,7 @@ const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
     } else {
       updatedTokenRef.current = false;
     }
-  }, [isAuthenticated, getToken, isLoading, user]);
+  }, [isAuthenticatedFromKinde, getToken, isLoading, user]);
 
   //-------------------------
 
@@ -84,6 +90,7 @@ const AuthProviderInner: React.FC<IAuthProviderProps> = ({ children }) => {
         login: handleLogin,
         register: handleRegister,
         logout: handleLogout,
+        isAuthenticated,
       }}
     >
       {isLoading ? (

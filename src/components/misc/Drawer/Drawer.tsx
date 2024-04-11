@@ -20,6 +20,7 @@ const Drawer: React.FC<IDrawerProps> = ({
   children,
   drawerMidHeight,
   canDrag,
+  headerProps,
 }) => {
   const [screenSize] = useState({
     w: window.screen.width,
@@ -159,7 +160,8 @@ const Drawer: React.FC<IDrawerProps> = ({
         ref={drawerRef}
         className={ANIMATION_CLASSNAMES.FADE_IN_FROM_BOTTOM}
       >
-        <StyledHeader>
+        <StyledHeader className={headerProps?.className}>
+          {headerProps?.children}
           <StyledHandle
             ref={setDragElRef}
             style={{ display: canDrag ? "block" : "none" }}

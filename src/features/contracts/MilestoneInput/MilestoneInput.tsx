@@ -3,6 +3,7 @@ import React, { useCallback, useRef } from "react";
 import TextField from "@/components/input/TextField";
 import PriceCurrenyField from "@/features/input/PriceCurrenyField";
 import { ContractCurrency } from "@/services/ContractsService";
+import DateField from "@/components/input/DateField";
 
 import {
   StyledButton,
@@ -90,7 +91,7 @@ const MilestoneInput: React.FC<IMilestoneInputProps> = ({
               />
 
               <StyledDatesContainer className="mt-3">
-                <TextField
+                <DateField
                   placeholder="Start date"
                   value={start_date || ""}
                   onChange={(value) => {
@@ -98,7 +99,7 @@ const MilestoneInput: React.FC<IMilestoneInputProps> = ({
                   }}
                 />
 
-                <TextField
+                <DateField
                   placeholder="Due date"
                   value={end_date || ""}
                   onChange={(value) => {

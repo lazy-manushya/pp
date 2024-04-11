@@ -5,4 +5,5 @@
 [FLOWS UI](https://www.figma.com/file/4pimmLdldx8XvfloKFdqzO/%F0%9F%93%B1-Mobile-app-UI)
 
 - Deployment
-- 
+- Payment details for  
+- Charges enabled is payment onboarded

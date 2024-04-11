@@ -42,7 +42,7 @@ export const StyledButton = styled.button<IStyledButtonProps>`
   justify-content: center;
   align-items: center;
   gap: 12px;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border: 2px solid var(--border-color);
   outline: none;
 

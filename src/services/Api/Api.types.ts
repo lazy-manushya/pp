@@ -72,7 +72,7 @@ export interface IApiServiceParams {
 }
 
 export interface IApiService extends IApiServiceParams, IApiMethods {
-  getAuthToken: (authToken: string) => void;
+  getAuthToken: () => string;
   setAuthToken: (authToken: string) => void;
   clearAuthToken: () => void;
 }

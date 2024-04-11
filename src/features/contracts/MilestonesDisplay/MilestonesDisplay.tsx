@@ -45,15 +45,19 @@ const MilestonesDisplay: React.FC<IMilestoneInputProps> = ({
                 </StyledValueLight>
               </StyledFieldBGContainer>
 
-              <StyledFieldContainer className="mt-2">
-                <StyledLabel>Start date</StyledLabel>
-                <StyledValue>{startDate}</StyledValue>
-              </StyledFieldContainer>
+              {!!startDate && (
+                <StyledFieldContainer className="mt-2">
+                  <StyledLabel>Start date</StyledLabel>
+                  <StyledValue>{startDate}</StyledValue>
+                </StyledFieldContainer>
+              )}
 
-              <StyledFieldContainer className="mt-3">
-                <StyledLabel>Due date</StyledLabel>
-                <StyledValue>{endDate}</StyledValue>
-              </StyledFieldContainer>
+              {!!endDate && (
+                <StyledFieldContainer className="mt-3">
+                  <StyledLabel>Due date</StyledLabel>
+                  <StyledValue>{endDate}</StyledValue>
+                </StyledFieldContainer>
+              )}
             </StyledInputsContainer>
           );
         }

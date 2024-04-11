@@ -53,15 +53,20 @@ export const StyledDrawer = styled.div<{
 `;
 
 export const StyledHeader = styled.div`
-  position: relative;
-  display: grid;
-  place-items: center;
-  min-height: 1.5rem   ;
+  min-height: 1.5rem;
+  padding: 1rem 0.5rem;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1A1D1F;
 `;
 
 export const StyledHandle = styled.div`
-  position: relative;
   ${squareSizing("40px")};
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
   &::after {
     content: "";

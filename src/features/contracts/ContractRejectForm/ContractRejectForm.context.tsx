@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 import { useForm } from "@/components/input/Form";
 import { IButtonProps } from "@/components/input/Button";
+import { SITE_PATHS } from "@/config/routing";
 
 import {
   ContractRejectFormRef,
@@ -27,6 +28,7 @@ import {
 } from "./ContractRejectForm.styles";
 import { STEPS_CONFIG, STEPS_LIST } from "./ContractRejectForm.config";
 import RejectSuccessScreen from "./screens/SuccessScreen/RejectSuccessScreen";
+import { useContractDetails } from "@/services/ContractsService";
 
 const INITIAL_VALUES = {} as IContractRejectFormContext;
 
@@ -37,8 +39,11 @@ export const useContractRejectForm = () =>
 
 export const ContractRejectFormProvider: React.FC<
   IContractRejectFormProps & { rejected: boolean }
-> = ({ getFormRef, onStepChange, rejected }) => {
+> = ({ getFormRef, onStepChange, rejected, contractId }) => {
   const router = useRouter();
+  const {contractDetails} = useContractDetails(contractId);
+
+  console.log({contractDetails})
 
   const ref = useRef({} as ContractRejectFormRef);
   const stepContainerElRef = useRef<HTMLDivElement | null>(null);
@@ -51,7 +56,7 @@ export const ContractRejectFormProvider: React.FC<
   const ctaButtonProps = useMemo(() => {
     const props: IButtonProps = { children: "Send" };
 
-    props.disabled = !values.reason || !values.rejectionType;
+    props.disabled = !values.description || !values.reason;
 
     return props;
   }, [values]);
@@ -88,13 +93,13 @@ export const ContractRejectFormProvider: React.FC<
     const currentStepIndex = getStepIndex(currentStep);
 
     if (currentStepIndex === 0) {
-      router.back();
+      router.replace(`${SITE_PATHS.CONTRACTS_PAGE}/${contractId}`);
       return;
     }
 
     const nextStepIndex = Math.max(0, currentStepIndex - 1);
     gotToStep(STEPS_LIST[nextStepIndex].id as Step);
-  }, [currentStep, gotToStep, getStepIndex, router]);
+  }, [currentStep, gotToStep, getStepIndex, router, contractId]);
 
   const nextStep = useCallback(() => {
     const currentStepIndex = getStepIndex(currentStep);

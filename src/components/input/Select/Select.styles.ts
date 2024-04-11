@@ -63,7 +63,7 @@ export const StyledIcon = styled(Icon)`
     brightness(93%) contrast(95%);
 `;
 
-export const StyledHeading = styled.div`
+export const StyledValue = styled.div`
   padding: 0 1rem;
   font-size: 20px;
   line-height: 32px;

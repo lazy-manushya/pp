@@ -36,7 +36,7 @@ export type ContractMilestone = {
   currency: ContractCurrency;
 };
 
-export type ContractDetails = {
+export type ContractCreatePayload = {
   description: string;
   title: string;
   start_date: string | null;
@@ -86,7 +86,7 @@ export type CreatedContractDetails = {
   completed_by: null;
   start_date: null;
   end_date: null;
-  transaction_type: null;
+  transaction_type: null | ContractTransactionType;
   contract_type: ContractType;
   accepted_by: null;
   rejected_by: null;
@@ -106,14 +106,14 @@ export type ContractCompleteDetails = {
   title: string;
   rejected_title: null;
   rejected_reason: null;
-  is_active: true;
+  is_active: boolean;
   status: ContractStatus;
   parent_id: null;
   completed_at: null;
   completed_by: null;
   start_date: null;
   end_date: null;
-  transaction_type: ContractTransactionType;
+  transaction_type: null | ContractTransactionType;
   contract_type: ContractType;
   accepted_by: null;
   rejected_by: null;
@@ -135,9 +135,9 @@ export type ContractCompleteDetails = {
     created_at: string;
   }[];
   files: {
-    id: 30;
+    id: number;
     url: string;
-    owner_id: 0;
+    owner_id: number;
     is_active: true;
     milestone_id: null;
     milestone_work_id: null;
@@ -147,7 +147,7 @@ export type ContractCompleteDetails = {
   }[];
   milestones: {
     id: number;
-    name:string;
+    name: string;
     description: string;
     currency: ContractCurrency;
     revision_status: null;
@@ -173,11 +173,11 @@ export type ContractCompleteDetails = {
       role: ContractCreatorType;
       contract_id: string;
       contract_milestone_id: number;
-      updated_at:string;
+      updated_at: string;
       created_at: string;
       user: {
         id: number;
-        email:string;
+        email: string;
         given_name: string;
         family_name: string;
         picture: string;

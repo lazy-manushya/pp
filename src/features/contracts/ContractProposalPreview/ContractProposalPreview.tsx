@@ -4,6 +4,9 @@ import lodashGet from "lodash/get";
 import Card from "@/components/data/Card";
 import FilesInput, { FileObject } from "@/features/input/FilesInput";
 import { formatDate } from "@/utils/date";
+import UserInfo, { IUserInfoProps } from "@/features/user/UserInfo";
+import { selectUserData, useAppSelector } from "@/services/Store";
+import DetailsTable, { Item } from "@/components/data/DetailsTable";
 
 import { IContractProposalPageProps } from "./ContractProposalPreview.types";
 import {
@@ -13,12 +16,9 @@ import {
   StyledContractValue,
   StyledDataLabel,
   StyledDataValue,
-  StyledDetailsTable,
   StyledMainDetailsContainer,
   StyledSectionHeading,
 } from "./ContractProposalPreview.styles";
-import UserInfo, { IUserInfoProps } from "@/features/user/UserInfo";
-import { selectUserData, useAppSelector } from "@/services/Store";
 
 const ContractProposalPreview: React.FC<IContractProposalPageProps> = ({
   contractDetails,
@@ -52,7 +52,7 @@ const ContractProposalPreview: React.FC<IContractProposalPageProps> = ({
   );
 
   const detailFields = useMemo(() => {
-    let fields: { label: string; value: string }[] = [
+    let fields: Item[] = [
       {
         label: "Project type",
         value: contract_type,
@@ -115,16 +115,8 @@ const ContractProposalPreview: React.FC<IContractProposalPageProps> = ({
 
       <Card className="mt-4">
         <StyledSectionHeading>Transaction details</StyledSectionHeading>
-        <StyledDetailsTable>
-          <tbody>
-            {detailFields.map(({ label, value }, i) => (
-              <tr key={i}>
-                <td>{label}</td>
-                <td>{value}</td>
-              </tr>
-            ))}
-          </tbody>
-        </StyledDetailsTable>
+
+        <DetailsTable items={detailFields} />
       </Card>
 
       <FilesInput

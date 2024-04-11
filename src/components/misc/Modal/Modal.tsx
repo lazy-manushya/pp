@@ -27,15 +27,7 @@ const Modal: React.FC<IModalProps> = ({ state, children, ...restProps }) => {
         }}
         {...underlayProps}
       >
-        <StyledContainer
-          {...modalProps}
-          ref={ref}
-          style={{
-            position: "relative",
-            background: "#fff",
-            border: "1px solid gray",
-          }}
-        >
+        <StyledContainer {...modalProps} ref={ref}>
           {!!children && React.cloneElement(<>{children}</>, overlayProps)}
         </StyledContainer>
       </div>

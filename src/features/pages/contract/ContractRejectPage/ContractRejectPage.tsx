@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useState } from "react";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 
 import PageWithHeaderLayoutProps, {
   HeaderButton,
@@ -10,16 +10,15 @@ import Icon from "@/components/misc/Icon";
 import ContractRejectForm, {
   ContractRejectFormRef,
 } from "@/features/contracts/ContractRejectForm";
+import { SITE_PATHS } from "@/config/routing";
 
 import { StyledPage } from "./ContractRejectPage.styles";
 
-const ContractProposalPage: React.FC = () => {
-  const searchParams = useSearchParams();
+const ContractRejectPage: React.FC = () => {
+  const params = useParams<{ contract_id: string }>();
+  const contractIdFromUrl = params.contract_id;
   const router = useRouter();
-  const pathname = usePathname();
-  const flowFormUrl = searchParams.get("flow");
   const [formRef, setFormRef] = useState({} as ContractRejectFormRef);
-  const [userVerified, _] = useState(true);
 
   //-------------------
 
@@ -32,10 +31,10 @@ const ContractProposalPage: React.FC = () => {
   //-------------------
 
   useEffect(() => {
-    if (flowFormUrl) {
-      router.replace(pathname);
+    if (!contractIdFromUrl) {
+      router.replace(SITE_PATHS.CONTRACTS_PAGE);
     }
-  }, [router, flowFormUrl, searchParams, pathname]);
+  }, [router, contractIdFromUrl]);
 
   //-------------------
 
@@ -54,10 +53,13 @@ const ContractProposalPage: React.FC = () => {
       }}
     >
       <StyledPage>
-        <ContractRejectForm getFormRef={setFormRef} />
+        <ContractRejectForm
+          contractId={contractIdFromUrl}
+          getFormRef={setFormRef}
+        />
       </StyledPage>
     </PageWithHeaderLayoutProps>
   );
 };
 
-export default ContractProposalPage;
+export default ContractRejectPage;

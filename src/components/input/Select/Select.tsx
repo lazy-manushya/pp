@@ -1,18 +1,15 @@
 import React, { useCallback, useState } from "react";
-import { useSelectState } from "react-stately";
 
 import Drawer from "@/components/misc/Drawer";
+import Icon from "@/components/misc/Icon";
 
 import { ISelectProps, Item } from "./Select.types";
 import {
   StyledButton,
-  StyledHeading,
-  StyledIcon,
+  StyledIcon, 
   StyledOptionButton,
   StyledOptionContainer,
 } from "./Select.styles";
-import Icon from "@/components/misc/Icon";
-import { ANIMATION_CLASSNAMES } from "@/styles";
 
 function Select<T = string>(props: ISelectProps<T>) {
   const {
@@ -61,10 +58,9 @@ function Select<T = string>(props: ISelectProps<T>) {
         onRequestClose={() => {
           setIsOpen(false);
         }}
-      >
-        <StyledHeading>Rejection reasons?</StyledHeading>
+      > 
 
-        <StyledOptionContainer className="mt-3">
+        <StyledOptionContainer>
           {options.map((item, i) => {
             const isSelected = selectedOption === item;
 

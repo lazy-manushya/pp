@@ -5,13 +5,14 @@ import RadioButtonGroup from "@/components/input/RadioButtonGroup";
 import PriceCurrenyField from "@/features/input/PriceCurrenyField";
 import { ContractType } from "@/services/ContractsService";
 import MilestoneInput from "@/features/contracts/MilestoneInput";
+import FilesInput from "@/features/input/FilesInput";
+import DateField from "@/components/input/DateField";
 
 import { StyledDatesContainer } from "./ContractDetailsStep.styles";
 import { CONTRACT_TYPE_OPTIONS } from "../../../ContractForm.config";
 import { StyledSectionHeading } from "../../../ContractForm.styles";
 import { useContractForm } from "../../../ContractForm.context";
 import ClientDetails from "../../inputs/ClientDetails";
-import FilesInput from "@/features/input/FilesInput";
 
 const ContractDetailsStep: React.FC = () => {
   const { values, setFieldValue } = useContractForm();
@@ -47,7 +48,7 @@ const ContractDetailsStep: React.FC = () => {
         <>
           {isOneTimeContract && (
             <StyledDatesContainer className="mt-3">
-              <TextField
+              <DateField
                 placeholder="Issued"
                 value={values.start_date || ""}
                 onChange={(value) => {
@@ -55,7 +56,7 @@ const ContractDetailsStep: React.FC = () => {
                 }}
               />
 
-              <TextField
+              <DateField
                 placeholder="Due date"
                 value={values.end_date || ""}
                 onChange={(value) => {

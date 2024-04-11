@@ -10,3 +10,4 @@ export {
 } from "./ContractsService.types";
 export { default as useSwitchCreatorType } from "./hooks/useSwitchCreatorType";
 export { default as useContractList } from "./hooks/useContractList";
+export { default as useContractDetails } from "./hooks/useContractDetails";

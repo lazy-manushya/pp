@@ -4,30 +4,29 @@ import lodashGet from "lodash/get";
 
 import { selectUserData, useAppSelector } from "@/services/Store";
 import UserInfo, { IUserInfoProps } from "@/features/user/UserInfo";
-import PageWithHeaderLayoutProps, {
-  HeaderButton,
-} from "@/features/layouts/PageWithHeaderLayout";
+import PageWithHeaderLayoutProps from "@/features/layouts/PageWithHeaderLayout";
 import Icon from "@/components/misc/Icon";
 import { SITE_PATHS } from "@/config/routing";
 import PopoverButton, {
   usePopoverState,
 } from "@/components/misc/PopoverButton";
 import Card from "@/components/data/Card";
-
-import {
-  StyledButtonsContainer,
-  StyledContainer,
-  StyledContentContainer,
-  StyledDetailsTable,
-  StyledReviewSubmissionCard,
-} from "./ContractManagementPage.styles";
-import { IContractManagementPageProps } from "./ContractManagementPage.types";
-import { CONTRACT_DETAILS } from "./ContractManagementPage.temp";
 import Tabs from "@/components/navigation/Tabs";
 import { formatDate } from "@/utils/date";
 import FilesInput, { FileObject } from "@/features/input/FilesInput";
 import MilestonesDisplay from "@/features/contracts/MilestonesDisplay";
 import Button from "@/components/input/Button";
+import DetailsTable, { Item } from "@/components/data/DetailsTable";
+
+import {
+  StyledButtonsContainer,
+  StyledContainer,
+  StyledContentContainer, 
+} from "./ContractManagementPage.styles";
+import { IContractManagementPageProps } from "./ContractManagementPage.types";
+import { CONTRACT_DETAILS } from "./ContractManagementPage.temp";
+import StatusSection from "./components/StatusSection";
+import ReviewSubmissions from "./components/ReviewSubmissions";
 
 const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
   const menuState = usePopoverState();
@@ -35,16 +34,8 @@ const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
   const [contractDetails] = useState(CONTRACT_DETAILS);
   const [activeTabId, setActiveTabId] = useState("details");
 
-  const {
-    milestones,
-    files,
-    contract_type,
-    start_date,
-    end_date,
-    title,
-    total_value,
-    description,
-  } = contractDetails;
+  const { milestones, files, contract_type, start_date, end_date, title } =
+    contractDetails;
 
   const userDetails = useMemo(() => {
     if (!loggedInUserData || !milestones.length) return null;
@@ -77,7 +68,7 @@ const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
   );
 
   const detailFields = useMemo(() => {
-    let fields: { label: string; value: string }[] = [
+    let fields: Item[] = [
       {
         label: "Project type",
         value: contract_type,
@@ -133,6 +124,10 @@ const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
     >
       <StyledContainer>
         <StyledContentContainer>
+          <Card>
+            <StatusSection contractDetails={contractDetails} />
+          </Card>
+
           {!!userDetails && (
             <Card className="mt-3">
               <UserInfo {...userDetails} />
@@ -155,18 +150,9 @@ const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
               ]}
             />
 
-            {activeTabId === "details" && (
-              <StyledDetailsTable>
-                <tbody>
-                  {detailFields.map(({ label, value }, i) => (
-                    <tr key={i}>
-                      <td>{label}</td>
-                      <td>{value}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </StyledDetailsTable>
-            )}
+   
+
+            {activeTabId === "details" && <DetailsTable items={detailFields} />}
 
             {activeTabId === "overview" && (
               <MilestonesDisplay milestones={milestones as any[]} />
@@ -181,11 +167,7 @@ const ContractManagementPage: React.FC<IContractManagementPageProps> = () => {
             displayFileCount={0}
           />
 
-          <StyledReviewSubmissionCard className="mt-3">
-            <Icon isSrcRelative src="file_arrow_right.svg" customSize="1rem" />
-            <span>Review submissions</span>
-            <Icon isSrcRelative src="chevron_right.svg" customSize="xs" />
-          </StyledReviewSubmissionCard>
+          <ReviewSubmissions contractDetails={contractDetails} />
         </StyledContentContainer>
 
         <StyledButtonsContainer>

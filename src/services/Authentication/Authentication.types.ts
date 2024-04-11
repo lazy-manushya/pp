@@ -4,6 +4,7 @@ export interface IAuthContext {
   login: () => Promise<void>;
   register: () => Promise<void>;
   logout: () => Promise<void>;
+  isAuthenticated?: boolean;
 }
 
 export interface IAuthProviderProps {

@@ -11,4 +11,8 @@ export interface IDrawerProps {
   className?: string;
   children?: React.ReactNode;
   canDrag?: boolean;
+  headerProps?: {
+    children?: React.ReactNode;
+    className?: string;
+  };
 }

@@ -2,7 +2,7 @@ import { IFormContext } from "@/components/input/Form";
 import { FileObject } from "@/features/input/FilesInput";
 import {
   ContractCreationFlow,
-  ContractDetails,
+  ContractCreatePayload,
 } from "@/services/ContractsService";
 
 export enum Step {
@@ -12,7 +12,7 @@ export enum Step {
   Review = "Review",
 }
 
-export type ContractFormValues = ContractDetails & {
+export type ContractFormValues = ContractCreatePayload & {
   files: FileObject[];
   flow?: ContractCreationFlow;
   client_paypipe_id?: string;

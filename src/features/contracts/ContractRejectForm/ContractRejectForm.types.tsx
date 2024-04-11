@@ -5,11 +5,12 @@ export enum Step {
 }
 
 export type FormValues = {
-  rejectionType: string;
   reason: string;
+  description: string;
 };
 
 export interface IContractRejectFormProps {
+  contractId: string;
   getFormRef?: (ref: ContractRejectFormRef) => void;
   onStepChange?: (step: Step) => void;
   initialValues?: FormValues;

@@ -1,9 +1,10 @@
 import React from "react";
 
 import TextField from "@/components/input/TextField";
+import Select from "@/components/input/Select";
 
 import { useContractRejectForm } from "../../ContractRejectForm.context";
-import Select from "@/components/input/Select";
+import { REJECTION_REASONS } from "../../ContractRejectForm.config";
 
 const ReasonStep: React.FC = () => {
   const { values, setFieldValue } = useContractRejectForm();
@@ -11,23 +12,18 @@ const ReasonStep: React.FC = () => {
   return (
     <>
       <Select
-        placeholder="Rejection type"
-        value={values.rejectionType}
+        placeholder="Rejection type?"
+        value={values.reason || ""}
         onChange={({ value }) => {
-          setFieldValue("rejectionType", value);
+          setFieldValue("reason", value);
         }}
-        options={[
-          {
-            label: "Do not agree to quoted amount",
-            value: "Do not agree to quoted amount",
-          },
-          {
-            label: "I hired someone else",
-            value: "I hired someone else",
-          },
-        ]}
+        options={REJECTION_REASONS}
         drawerProps={{
-          drawerMidHeight:'204px'
+          drawerMidHeight: "176px",
+          headerProps: {
+            children: "Rejection reasons?",
+            className: "px-3 pb-2",
+          },
         }}
       />
 
@@ -35,9 +31,9 @@ const ReasonStep: React.FC = () => {
         textArea
         className="mt-3"
         placeholder="Your reasoning"
-        value={values.reason}
+        value={values.description || ""}
         onChange={(value) => {
-          setFieldValue("reason", value);
+          setFieldValue("description", value);
         }}
       />
     </>
